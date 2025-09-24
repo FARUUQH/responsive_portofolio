@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink:wght@100..900&display=swap');
 
 :root{
 --primary-color:#ff0080;
@@ -50,6 +51,9 @@ li{
     top: 0;
     width: 100%;
     border-bottom: 1px solid var(--primary-color);
+    backdrop-filter: blur (10px);
+    z-index: 10000;
+    background: rgba(10, 10, 10, 0.9);
 }
 
 .nav-container{
@@ -152,13 +156,171 @@ li{
 @keyframes glitch-2 {
     0%, 20%,21%,62%,63%, 99%,100%{
         transform: translate(0);
-    }
+    };
     21%,62%{
         transform: translate(2px, -2px);
     }
     
 }
 
+/* Hero Section */
+.hero{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(45deg, var(--bg-color), #1a0a0a);
+    
+}
+.hero-container{
+    z-index: 2;
+    text-align: center;
+
+
+}
+.hero-content{
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.hero-avatar {
+    position: relative;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    display: inline-block;
+    /* font-size: 3rem; */
+    top: 2rem;
+}
+.hero-title{
+    /* display: ; */
+    font-size: 2.5rem;
+    font-family: 'orbitron', monospace;
+}
+.hero-subtitle{
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    line-height: 2rem;
+    font-family: 'Bitcount Single Ink';
+}
+.cursor {
+    animation:blink 1s infinite ;
+}
+
+/* hero button */
+.hero-btn{
+    position: relative;
+      background-color: none;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      font-size: 1.3rem;
+      padding: 15 30px;
+      cursor: pointer;
+      overflow: hidden;
+      font-family: 'orbitron' , monospace;
+      transition: all 0.3s ease;
+      width: 20rem;
+}
+.hero-btn:hover{
+    color: var(--bg-color);
+    background: var(--primary-color);
+    box-shadow: 0 0 30px var(--primary-color);
+    
+}
+.btn-glow {
+    position: absolute;
+    left:-100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+    transition: left 0.5s;
+}
+.hero-btn:hover .btn-glow{
+    left: 100%;
+}
+
+
+@keyframes blink {
+    0%, 50% {opacity: 0;}
+    51%, 100% {opacity: 1;}
+    
+}
+
+/* particles */
+
+.particles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+ .particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    animation: float 10s infinite linear;
+ } 
+ @keyframes float{
+    0%{
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10%{
+        opacity: 1;
+    }
+    20%{
+        opacity: 1;
+    }
+    30%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-100px) rotate(360deg);
+        opacity: 0;
+    }
+ }
+
+.avatar-bubble{
+    position: absolute;
+    background: conic-gradient(var(--primary-color), var(--secondary-color), var(--accent-color), var(--primary-color));
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    z-index: -1;
+    animation: bubble 3s linear infinite;
+}
+
+.avatar-image {
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    height: 300px;
+    width: 300px;
+    box-shadow: 0 0 20px var(--primary-color);
+
+}
+@keyframes bubble {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);};
+}
 
 @media(max-width:750px){
     .hamburger{
